@@ -1,13 +1,13 @@
 # **git命令**
 
-**1.本地创建版本库后同步到github步骤**
+**1.本地创建版本库后,同步到github步骤**
 
 	create a new repository on the command line
 
 
 >
 >echo # LinuxAndGit_command >> README.md
->git init
+>git init  //初如化当前目录为git 库。
 >
 >git add README.md
 >
