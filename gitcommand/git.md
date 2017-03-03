@@ -35,3 +35,5 @@
 **3.本地git 升级**
 >git clone git://git.kernel.org/pub/scm/git/git.git
 
+**3.切换远程库**
+> git remote set-url origin https://github.com/JasonLisa/mygit.git
