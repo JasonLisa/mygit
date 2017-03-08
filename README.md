@@ -57,3 +57,14 @@ SELECT '028','fcgzch','更换锂电池',28,'1' from dual union
 SELECT '029','fcgzch','测试正常,更新版本或初始化参数',29,'1' from dual union
 SELECT '030','fcgzch','备用设备反库',30,'1' from dual
 ```
+- 3. 在权限管理系统中，在 **统计分析模块** 添加加一模块，配置如下，并赋予相应权限。
+    - 1. 模块名称：返厂维修处理方式统计
+    - 2. 路径：tjfx/fcwxclfstj.aspx
+
+- 4. 添加tjfx/fcwxclfstj.aspx文件
+
+
+- 5. 返厂故障申请
+    - 修改Gpsgl\azwxgl\fcwxsq.aspx
+    - 添加Gpsgl\public\public_SelectFCGZXXCLFf.aspx
+
