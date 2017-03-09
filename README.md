@@ -1,13 +1,27 @@
+## 出库申请单（已解决）
+>- 正在走出库流程的设备还可以再选。
+>- 出库申请模块中，申请出库设备的弹出窗的样式与系统不一致。
+>- 修改文件`Gpsgl\gpsgl\ckgl_sel_kctz.aspx`、`Gpsgl\gpsgl\ckgl_sel_kctz.aspx.cs`
+
+## SIM卡信息管理（已解决）
+>- SIM卡信息管理模块按余额排序，余额少的排在上边，升序排列。
+>- 修改文件`Gpsgl\simgl\simxxgl.aspx`、`E:\Workspaces\Gpsgl\simgl\simxxgl.aspx.cs`
+
+## 合同维护时间管理（已解决）
+>- 列表中增加联系人和电话。
+>- 在权限管理中，合同维护时间管理模块的链接地址改为`jcxxgl\htwhsj_Default.aspx`
+>- 增加文件`Gpsgl\jcxxgl\htwhsj_Default.aspx`、`Gpsgl\jcxxgl\htwhsj_Default.aspx.cs`
+>- 增加文件`Gpsgl\jcxxgl\htwhsj_tree.aspx`、`Gpsgl\jcxxgl\htwhsj_tree.aspx.cs`
+>- 修改文件`Gpsgl\jcxxgl\Jcxxgl_HtwhsjMain.aspx`、`Gpsgl\jcxxgl\Jcxxgl_HtwhsjMain.aspx.cs`
+
 
 # GPS系统
 
-## 编码管理加一类(返厂维修缺陷)
-> 大类直接在数据库加，小类在程序加
-## 统计分析加一模块，对应缺陷，类似于缺陷分类统计
-## 安装维修管理中，返厂维修维修申请 
-> 流程中第二部按新添加的缺陷编码表添加下拉列表，当选择报废或其他处理时，备注为必填选项。
+## 编码管理
+> 编码管理模块添加一类(返厂维修缺陷)
 
- ## 处理方式如下
+
+### 处理方式
  - 1.编码表添加一记录
  ``` 
   insert into gps_t_p_type values ('fcgzch','返厂故障处理','1',sysdate)
@@ -47,38 +61,18 @@ SELECT '028','fcgzch','更换锂电池',28,'1' from dual union
 SELECT '029','fcgzch','测试正常,更新版本或初始化参数',29,'1' from dual union
 SELECT '030','fcgzch','备用设备反库',30,'1' from dual
 ```
-- 3.在权限管理系统中，在 **统计分析模块** 添加加一模块，配置如下，并赋予相应权限。
+## 统计分析
+> 统计分析加一模块，对应编码表新添加编码的统计信息，类似于缺陷分类统计
+###处理方式如下
+- 1.在权限管理系统中，在 **统计分析模块** 添加加一模块，配置如下，并赋予相应权限。
     - 1.模块名称：返厂维修处理方式统计
     - 2.路径：tjfx/fcwxclfstj.aspx
+- 2.添加tjfx/fcwxclfstj.aspx文件
 
-- 4.添加tjfx/fcwxclfstj.aspx文件
 
+## 返厂维修维修申请单
+> 流程中第二部按新添加的缺陷编码表添加下拉列表，当选择报废或其他处理时，备注为必填选项。
+### 处理方式如下
+- 1.修改Gpsgl\azwxgl\fcwxsq.aspx
+- 2.添加Gpsgl\public\public_SelectFCGZXXCLFf.aspx
 
-- 5.返厂故障申请
-    - 修改Gpsgl\azwxgl\fcwxsq.aspx
-    - 添加Gpsgl\public\public_SelectFCGZXXCLFf.aspx
-
----
-
-## 库存查询  数量对应不上。
-
----
-## 返厂维修申请流程更改、返厂维修申请与出库申请中的完结挂勾。
-> 具体如下：在返厂维修中，设备列表增加一列，对应出库单(只是维修的),这样出库单就可以完结了。
-
----
-## 出库样式更改。
-
-----
-## 合同维护时间管理，已过期过滤，去掉暂停维护。
- ---
-## 联系人按地区分。(调整联系人顺序)
-
- ---
-## 流程监控(流程查询)，只监控开始但是没有完结的流程。
-
- ---
-## 所有统计分析中，查询条件中，有时间范围的，都加上默认时间范围。默认时间范围为当月1号至本天。
-
- ---
-## 工作量统计中，加一列，表示工作效率。
