@@ -1,16 +1,6 @@
-# 人资系统
-- 合同管理中，员工合同信息，表格行为红色原因。 
-- 文档需要细化。
-- word文档增加目录。目录保留。
-- word中所有流程图修改为规范样式。
 
 # GPS系统
-## 联系人按地区分。
-> (表格项目名称后增加两列，联系人、联系电话)
-```
-htwhsj_default.aspx
-```
----
+
 ## 编码管理加一类(返厂维修缺陷)
 > 大类直接在数据库加，小类在程序加
 ## 统计分析加一模块，对应缺陷，类似于缺陷分类统计
@@ -18,11 +8,11 @@ htwhsj_default.aspx
 > 流程中第二部按新添加的缺陷编码表添加下拉列表，当选择报废或其他处理时，备注为必填选项。
 
  ## 处理方式如下
- - 1. 编码表添加一记录
+ - 1.编码表添加一记录
  ``` 
   insert into gps_t_p_type values ('fcgzch','返厂故障处理','1',sysdate)
  ```
- - 2. 编码子表添加30条记录
+ - 2.编码子表添加30条记录
 
 ```
 INSERT INTO gps_t_r_code (scode_id,stype_id,scodename,orderid,isshow)
@@ -57,14 +47,14 @@ SELECT '028','fcgzch','更换锂电池',28,'1' from dual union
 SELECT '029','fcgzch','测试正常,更新版本或初始化参数',29,'1' from dual union
 SELECT '030','fcgzch','备用设备反库',30,'1' from dual
 ```
-- 3. 在权限管理系统中，在 **统计分析模块** 添加加一模块，配置如下，并赋予相应权限。
-    - 1. 模块名称：返厂维修处理方式统计
-    - 2. 路径：tjfx/fcwxclfstj.aspx
+- 3.在权限管理系统中，在 **统计分析模块** 添加加一模块，配置如下，并赋予相应权限。
+    - 1.模块名称：返厂维修处理方式统计
+    - 2.路径：tjfx/fcwxclfstj.aspx
 
-- 4. 添加tjfx/fcwxclfstj.aspx文件
+- 4.添加tjfx/fcwxclfstj.aspx文件
 
 
-- 5. 返厂故障申请
+- 5.返厂故障申请
     - 修改Gpsgl\azwxgl\fcwxsq.aspx
     - 添加Gpsgl\public\public_SelectFCGZXXCLFf.aspx
 
