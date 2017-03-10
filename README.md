@@ -70,9 +70,16 @@ SELECT '030','fcgzch','备用设备反库',30,'1' from dual
 - 2.添加tjfx/fcwxclfstj.aspx文件
 
 
-## 返厂维修维修申请单
+## 返厂维修申请单
 > 流程中第二部按新添加的缺陷编码表添加下拉列表，当选择报废或其他处理时，备注为必填选项。
 ### 处理方式如下
 - 1.修改Gpsgl\azwxgl\fcwxsq.aspx
 - 2.添加Gpsgl\public\public_SelectFCGZXXCLFf.aspx
 
+
+
+
+## 库存查询
+> 库存醒询数量与详细数量不一致。
+### 处理方式如下
+- 修改文件`Gpsgl\gpsgl\kcxx.aspx.cs`
