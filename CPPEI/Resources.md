@@ -19,6 +19,10 @@
 ```
 select t.* from Com_BuyWebsite t where t.WebSID='2E4713D0-BCC0-4D4F-8DD1-1A6F34D371F6'
 ```
+>系统中有哪些流程
+```
+SELECT * FROM [MIS_WorkFlow].[dbo].[WFD_FlowInfo] where WorkFlowName like '%外%'
+```
 
 >流程主表
 ```
@@ -28,6 +32,10 @@ SELECT * FROM [MIS_WorkFlow].[dbo].[WF_WorkFlowInstance] where WFMouldID='BW2202
 >流程总共有多少个Node
 ```
 SELECT * FROM [MIS_WorkFlow].[dbo].[WF_NodeInstance] where WFID='716'
+```
+>各节点下面有哪些人可以审批
+```
+SELECT * FROM [MIS_WorkFlow].[dbo].[WF_SubNodeInstance] where wfid='716' 
 ```
 
 >流程已经审批过的Node
