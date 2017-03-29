@@ -74,7 +74,7 @@
 ```
 ```
  var PaperID = request('paperid');
- 
+
  // {0}题号 {1}题型 {2}题干 {3}(子题干+)选项 {4}参考答案，你的答案 {5}是否标记 {6}是否正确
                     var temp = String.format($('#tpl-question').html(),
                         j,
@@ -86,4 +86,55 @@
                         tempOption[3] == 0x00 ? ' box-warning' : tempOption[3] == 0x03 ? ' box-success' : 'box-default'
                     );
                     $('.questionViewLeft').append(temp);
+```
+
+## 前台ajax调用controller时，注意事项
+1. **注意一**
+```
+以下两种传参没有区别 
+$.post("/GeneralAffairs/ByuWebSiteEnd", {endReason:encodeURI(msg),busId:"@Model.WebSID"}, function (data, textStatus, jqXHR) {
+    $.ligerDialog.success(data, function (yes) {
+        parent.window.location.href = "/Common/Detail?status=3&isCreateUser=true&busId=@ViewData["busId"]&url=/GeneralAffairs/BuyWebsiteView?busId=@ViewData["busId"]";
+    });
+});
+
+$.post("/GeneralAffairs/ByuWebSiteEnd?endReason=" + encodeURI(msg) + "&busId=@ViewData["needId"]", function (data, textStatus, jqXHR) {
+    $.ligerDialog.success(data, function (yes) {
+        parent.window.location.href = "/Common/Detail?status=3&isCreateUser=true&busId=@ViewData["busId"]&url=/GeneralAffairs/BuyWebsiteView?busId=@ViewData["busId"]";
+    });
+});
+```
+## 后台controller方法要这样写
+```
+形参要和前台传的过一参数名字一样，才能获取到，可以直接用
+public ActionResult ByuWebSiteEnd(string endReason, string busId) {
+    string endstring = endReason;
+}
+
+也可以不一样
+public ActionResult ByuWebSiteEnd(string end, string id) {
+    //获取时要这样获取
+    string endstring = Request.Form["endReason"];
+}
+```
+
+2. **注意二**
+```
+可以传一个表单或一个json对象去后台controller
+$.post('@Url.Content("/GeneralAffairs/BuyWebsiteAdd")', $("#form").serialize(), function (data) {
+    $.messager.progress('close');
+    if (data.split(',')[0] == "0") {
+        window.location.href = data.split(',')[1];
+    } else {
+        $.messager.alert('操作提示', data.split(',')[1], 'info');
+    }
+});
+```
+```
+后台controller可以直接按照一个实例对象来接收(如下面的model，实例对象会自动匹配传过来的参数)，比如 如果传的过来的参数只有id、name、age
+public ActionResult BuyWebsiteAdd(Com_BuyWebsite model) {
+            string id = model.id;//可以获取id
+            string name = model.name;//可以获取name
+            string age = model.age;//不能获取，但是不会报错
+}        
 ```
