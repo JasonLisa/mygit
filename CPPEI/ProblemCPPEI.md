@@ -33,3 +33,57 @@
 1. ActionName
 2. NonAction、ChildActionOnly
 3. HttpPost、HttpGet
+
+
+
+## 分部视图知识
+> http://www.tuicool.com/articles/ZnAzyqI
+> http://www.cnblogs.com/kissdodog/archive/2013/01/07/2848881.html
+> http://www.cnblogs.com/SharpL/p/4641886.html
+
+
+```
+//获取参数
+    function request(paras) {
+        var url = location.href;
+        var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+        var paraObj = {}
+        for (i = 0; j = paraString[i]; i++) {
+            paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+        }
+        var returnValue = paraObj[paras.toLowerCase()];
+        if (typeof (returnValue) == "undefined") {
+            return "";
+        } else {
+            return returnValue;
+        }
+    }
+
+     //字符串类扩充
+    String.format = function () {
+        if (arguments.length == 0)
+            return null;
+        var str = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+            var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+            str = str.replace(re, arguments[i]);
+        }
+        return str;
+    };
+
+```
+```
+ var PaperID = request('paperid');
+ 
+ // {0}题号 {1}题型 {2}题干 {3}(子题干+)选项 {4}参考答案，你的答案 {5}是否标记 {6}是否正确
+                    var temp = String.format($('#tpl-question').html(),
+                        j,
+                        item.TypeName,
+                        item.Title,
+                        tempOption[0],
+                        tempOption[1],
+                        item.Marked ? '<i class="fa fa-heart" aria-hidden="true">  </i> 标记' : '<i class="fa fa-heart-o"> </i>  标记 ',
+                        tempOption[3] == 0x00 ? ' box-warning' : tempOption[3] == 0x03 ? ' box-success' : 'box-default'
+                    );
+                    $('.questionViewLeft').append(temp);
+```
