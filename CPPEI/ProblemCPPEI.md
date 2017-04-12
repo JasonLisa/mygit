@@ -138,3 +138,123 @@ public ActionResult BuyWebsiteAdd(Com_BuyWebsite model) {
             string age = model.age;//不能获取，但是不会报错
 }        
 ```
+
+
+
+## Other
+```
+#region Json字符串与实体类序列化
+
+        /// <summary>
+        /// Json字符串反序列化
+        /// </summary>
+        /// <typeparam name="T">数据类型</typeparam>
+        /// <param name="json">Json字符串</param>
+        /// <returns>反序列号实体类</returns>
+        public T DeserializeJson<T>(string json)
+        {
+            T obj = Activator.CreateInstance<T>();
+            using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+                return (T)serializer.ReadObject(ms);
+            }
+        }
+
+        /// <summary>
+        /// Json对象序列化
+        /// </summary>
+        /// <typeparam name="T">数据类型</typeparam>
+        /// <param name="data">序列号数据对象</param>
+        /// <returns>Json字符串</returns>
+        public string SerializeJson<T>(T data)
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(data.GetType());
+            using (MemoryStream ms = new MemoryStream())
+            {
+                serializer.WriteObject(ms, data);
+                return Encoding.UTF8.GetString(ms.ToArray());
+            }
+        }
+
+        #endregion.
+```
+```
+ // GET: BuyWebsite
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: BuyWebsite/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: BuyWebsite/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: BuyWebsite/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: BuyWebsite/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: BuyWebsite/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: BuyWebsite/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: BuyWebsite/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+```
