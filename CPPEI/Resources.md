@@ -8,6 +8,9 @@
 
 > 用户名：admin 初始密码：1
 
+## 测试接口
+> http://localhost:10244/BussinessService.asmx
+
 ## 流程配置地址
 > http://10.122.100.165:8082/WFDefine/Login.aspx
 
