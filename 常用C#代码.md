@@ -53,3 +53,10 @@ public class FilterConfig
     }
 }
 ```
+
+## entity framework 相关
+>1. 使用MVC5+Entity Framework6的Code First模式创建数据库并实现增删改查功能
+>
+> http://www.cnblogs.com/andfly/p/6719444.html
+
+> https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/generating-views
