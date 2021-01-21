@@ -83,6 +83,7 @@
 - 一般一个第三方工具包会有多个模块，require 时，是查找的这个工具包的 index.js 文件；如果没有，那个第个模块的 package.json 中会写明入口文件的文件名；
 
 - require 查找文件顺序请参考[require() 源码解读](http://www.ruanyifeng.com/blog/2015/05/require.html)
+- https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/module.md
 
 - > ```javascript
   > (function (exports, require, module, __filename, __dirname) {
