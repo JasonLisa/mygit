@@ -52,3 +52,7 @@ main 是最常见的帮助命令，也是 Linux 最主要的帮助命令，其�
 ```
 
 http://c.biancheng.net/linux_tutorial/
+https://explainshell.com/explain/1/ls
+https://www.linuxcool.com/
+http://c.biancheng.net/linux_tutorial/
+https://wangchujiang.com/linux-command/list.html#!kw=ls
