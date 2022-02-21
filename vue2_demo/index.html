@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vuejs/vue2.6.9.js"></script>
+</head>
+
+<body>
+
+    <template id="info">
+        <div>
+            <button v-on:click="count++">You clicked me {{ count }} times.</button>
+            <input type="checkbox"></input>
+        </div>
+    </template>
+
+    <div id="components-demo">
+        <button-counter></button-counter>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('buttonCounter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '#info'
+        })
+
+        new Vue({ el: '#components-demo' })
+
+
+    </script>
+
+</body>
+
+</html>
